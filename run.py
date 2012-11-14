@@ -1,5 +1,6 @@
 import simplejson as json
 import time
+import os
 
 from httplib2 import Http
 from urllib import urlencode
@@ -63,6 +64,6 @@ def page_not_found(error):
 def something_broke(error):
     return render_template('500.html')
 
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
